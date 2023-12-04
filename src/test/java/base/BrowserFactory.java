@@ -50,7 +50,7 @@ public class BrowserFactory {
 		}
 		driverManager.setDriver(driver);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	public void navigateToTheUrl() {

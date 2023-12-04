@@ -5,9 +5,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import base.CommonSeleniumActions;
 import base.DriverManager;
 
-public class LoginPage {
+public class LoginPage extends CommonSeleniumActions {
 
 	public LoginPage() {
 		PageFactory.initElements(DriverManager.getDriver(), this);
@@ -36,13 +37,17 @@ public class LoginPage {
 	}
 
 	public void loginButton() {
-		loginButton.click();
+		clickOnElement(loginButton);
 	}
 
 	public void loginIntoTheApplication(String username, String password) {
+		waitforTime(2);
 		usernameInputField.sendKeys(username);
+		waitforTime(2);
 		passwordInputField.sendKeys(password);
+		waitforTime(2);
 		loginButton.click();
+		waitforTime(2);
 	}
 
 }

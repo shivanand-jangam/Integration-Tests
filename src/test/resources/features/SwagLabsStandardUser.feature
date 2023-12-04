@@ -6,8 +6,9 @@ Feature: Swag Labs Standars User scenarios
     Given User is on Swag Labs Login Page
     When User enteres "standard_user" details
     Then Verify user is logged in
-    #When User Delete all products from Cart
-    #Then Verify Cart Should be Empty
+    And Navigate to the Cart Page
+    When User Delete all products from Cart
+    Then Verify Cart Should be Empty
     #When User Add Product <Product> into Cart
     #Then Verify Product Add to cart button is converted into Remove cart button
 #		And Verify Cart count is diplayed as 1
