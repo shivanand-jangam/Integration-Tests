@@ -31,7 +31,7 @@ public class TestRunner<CucumberFeatureWrapper> {
 	@BeforeMethod
 	public void openBrowser() {
 		browserFactory.openBrowser();
-		browserFactory.navigateToTheGreenKartUrl();
+		browserFactory.navigateToTheUrl();
 	}
 
 	@Test(dataProvider = "scenarios", description = "Scenario Name: ")

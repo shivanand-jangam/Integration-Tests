@@ -60,4 +60,8 @@ public class BrowserFactory {
 	public void closeTest() {
 		driver.quit();
 	}
+	
+	public void navigateToTheGreenKartUrl() {
+		driver.get(propertyFileUtil.getProperty("greenkart.base.url"));
+	}
 }
