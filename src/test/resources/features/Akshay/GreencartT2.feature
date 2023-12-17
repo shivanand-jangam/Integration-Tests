@@ -1,11 +1,11 @@
 Feature: Shopping and Checkout
 
-  @MyFirstOne @SmokeTest @Regression
+  @MyFirstOne @SmokeTest @Regression @GKart
   Scenario: Verify search functionality add to cart and verify cart
     Given the user is on the homepage
     When the user types "Tomato" in the search bar
+    And adds "10" quantity of "Tomato" to the cart
     And the user clicks on the Add to Cart button for "Tomato"
-    And adds "1" quantity of "Tomato" to the cart
     Then the user should see that "Tomato" is added to the cart
     And the user proceeds to checkout button
     Then Verify user should navigate to Cart page

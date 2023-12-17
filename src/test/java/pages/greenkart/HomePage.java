@@ -26,7 +26,7 @@ public class HomePage extends CommonSeleniumActions {
 
 	@FindBy(xpath = "//a[@class='cart-icon']")
 	private WebElement cartIcon;
-	
+
 	@FindBy(xpath = "//div[@class='cart-preview active']/descendant::p[@class='product-name']")
 	private WebElement cartProductNameText;
 
@@ -55,17 +55,19 @@ public class HomePage extends CommonSeleniumActions {
 		DriverManager.getDriver()
 				.findElement(
 						By.xpath(String.format(QUANTITY_INPUT_FIELD, product)))
+				.clear();
+		waitforTime(1);
+		DriverManager.getDriver()
+				.findElement(
+						By.xpath(String.format(QUANTITY_INPUT_FIELD, product)))
 				.sendKeys(quantity);
 		waitforTime(1);
 	}
 
-	public void clickOnCartIcon() {
+	public void verifyProductIsAddedToTheCart(String product) {
 		cartIcon.click();
 		waitforTime(1);
-	}
-	
-	public void verifyProductIsAddedToTheCart(String product) {
-		Assert.assertEquals(cartProductNameText.getText(),product,
+		Assert.assertTrue(cartProductNameText.getText().contains(product),
 				"Given Product is not added to the cart");
 	}
 

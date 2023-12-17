@@ -16,7 +16,7 @@ import io.cucumber.testng.TestNGCucumberRunner;
 		"stepDefinations",}, plugin = {"pretty",
 				"html:target/cucumber-reports/cucumber-pretty",
 				"json:target/cucumber-reports/CucumberTestReport.json",
-				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, tags = "@MyFirstOne")
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, tags = "@GKart")
 
 public class GreenKartTestRunner<CucumberFeatureWrapper> {
 
@@ -31,7 +31,7 @@ public class GreenKartTestRunner<CucumberFeatureWrapper> {
 	@BeforeMethod
 	public void openBrowser() {
 		browserFactory.openBrowser();
-		browserFactory.navigateToTheUrl();
+		browserFactory.navigateToTheGreenKartUrl();
 	}
 
 	@Test(dataProvider = "scenarios", description = "Scenario Name: ")
