@@ -18,7 +18,7 @@ import io.cucumber.testng.TestNGCucumberRunner;
 				"json:target/cucumber-reports/CucumberTestReport.json",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, tags = "@MyFirstOne")
 
-public class TestRunner<CucumberFeatureWrapper> {
+public class GreenKartTestRunner<CucumberFeatureWrapper> {
 
 	private TestNGCucumberRunner testNGCucumberRunner;
 	BrowserFactory browserFactory = new BrowserFactory();
