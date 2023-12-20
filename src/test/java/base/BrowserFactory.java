@@ -56,7 +56,11 @@ public class BrowserFactory {
 	public void navigateToTheUrl() {
 		driver.get(propertyFileUtil.getProperty("base.url"));
 	}
-
+	
+	public void navigateToTheDominosUrl() {
+		driver.get(propertyFileUtil.getProperty("dominos.base.url"));
+	}
+	
 	public void closeTest() {
 		driver.quit();
 	}
