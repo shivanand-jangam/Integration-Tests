@@ -12,6 +12,7 @@ public class ChildClass extends ParentClass {
 	}
 
 	ChildClass(String a, int b) {
+		super("Shiva");
 		name = a;
 		age = b;
 	}
