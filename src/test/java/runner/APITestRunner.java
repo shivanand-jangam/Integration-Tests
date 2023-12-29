@@ -7,7 +7,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import base.BrowserFactory;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
@@ -18,10 +17,9 @@ import io.cucumber.testng.TestNGCucumberRunner;
 				"json:target/cucumber-reports/CucumberTestReport.json",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, tags = "@APITest")
 
-public class TestRunner<CucumberFeatureWrapper> {
+public class APITestRunner<CucumberFeatureWrapper> {
 
 	private TestNGCucumberRunner testNGCucumberRunner;
-	BrowserFactory browserFactory = new BrowserFactory();
 
 	@BeforeClass
 	public void beforeClass() {
@@ -30,8 +28,6 @@ public class TestRunner<CucumberFeatureWrapper> {
 
 	@BeforeMethod
 	public void openBrowser() {
-		browserFactory.openBrowser();
-		browserFactory.navigateToTheUrl();
 	}
 
 	@Test(dataProvider = "scenarios", description = "Scenario Name: ")
@@ -42,7 +38,6 @@ public class TestRunner<CucumberFeatureWrapper> {
 
 	@AfterMethod
 	public void closeTest() {
-		browserFactory.closeTest();
 	}
 
 	@DataProvider(parallel = false)
