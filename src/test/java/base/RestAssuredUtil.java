@@ -5,6 +5,10 @@ import java.util.Map;
 
 import org.testng.Assert;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Pojos.createbooking.CreatedBookingDetails;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -73,6 +77,24 @@ public class RestAssuredUtil {
 			response = RestAssured.given().when().headers(headers).body(body)
 					.delete(endpoint);
 			System.out.println(response.asPrettyString());
+		}
+	}
+
+	public void verifyBookingIdGenerated() {
+		//https://json2csharp.com/code-converters/json-to-pojo
+		ObjectMapper om = new ObjectMapper();
+		try {
+			CreatedBookingDetails root = om.readValue(response.asString(),
+					CreatedBookingDetails.class);
+
+			System.out.println("****&&&&&&&: "+root.bookingid);
+			System.out.println("****&&&&&&&: "+root.booking.firstname);
+			System.out.println("****&&&&&&&: "+root.booking.bookingdates.checkin);
+			Assert.assertTrue(String.valueOf(root.bookingid) != null
+					|| String.valueOf(root.bookingid) != "");
+
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
 		}
 	}
 

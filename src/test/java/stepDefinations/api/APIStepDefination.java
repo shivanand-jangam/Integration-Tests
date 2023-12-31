@@ -35,4 +35,9 @@ public class APIStepDefination {
 		restAssuredUtil.verifyResonseCodeAs(statucCode);
 	}
 
+	@Then("the verify booking id is generated")
+	public void the_verify_booking_id_is_generated() {
+		restAssuredUtil.verifyBookingIdGenerated();
+	}
+
 }

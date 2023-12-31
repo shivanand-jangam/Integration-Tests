@@ -10,6 +10,7 @@ Feature: Rsestful-booker API scenarios
     When I provided the body for create booking
     And I make a "POST" request
     Then the response status code should be 200
+    And the verify booking id is generated
 
   @APITest2
   Scenario: Verify PUT request for Booking ID

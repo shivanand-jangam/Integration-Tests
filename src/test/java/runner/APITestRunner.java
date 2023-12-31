@@ -15,7 +15,8 @@ import io.cucumber.testng.TestNGCucumberRunner;
 		"stepDefinations",}, plugin = {"pretty",
 				"html:target/cucumber-reports/cucumber-pretty",
 				"json:target/cucumber-reports/CucumberTestReport.json",
-				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, tags = "@APITest")
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+				tags = "@APITest1")
 
 public class APITestRunner<CucumberFeatureWrapper> {
 
