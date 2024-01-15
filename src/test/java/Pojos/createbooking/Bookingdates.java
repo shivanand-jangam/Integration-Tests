@@ -1,6 +1,6 @@
-package Pojos.createbooking;
+package Pojos.createBooking;
 
 public class Bookingdates {
-	public String checkin;
-	public String checkout;
+    public String checkin;
+    public String checkout;
 }

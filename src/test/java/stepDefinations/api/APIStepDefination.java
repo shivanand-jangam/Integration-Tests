@@ -19,6 +19,13 @@ public class APIStepDefination {
 		String body = "{\"firstname\":\"ApiFName\",\"lastname\":\"ApiLName\",\"totalprice\":656565,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2024-01-01\",\"checkout\":\"2024-01-01\"},\"additionalneeds\":\"Breakfast\"}";
 		restAssuredUtil.setBody(body);
 	}
+	
+	@When("I provided the body for create booking as firstname is (.*) and lastname is (.*)")
+	public void i_provided_the_body_for_create_booking_using_param_values(String fname, String lname) {
+		String body = "{\"firstname\":"+fname+",\"lastname\":"+lname+",\"totalprice\":656565,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2024-01-01\",\"checkout\":\"2024-01-01\"},\"additionalneeds\":\"Breakfast\"}";
+		restAssuredUtil.setBody(body);
+	}
+	
 
 	@When("I provided the content type as {string}")
 	public void i_provided_the_content_type_as(String string) {
