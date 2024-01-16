@@ -16,7 +16,7 @@ import io.cucumber.testng.TestNGCucumberRunner;
 				"html:target/cucumber-reports/cucumber-pretty",
 				"json:target/cucumber-reports/CucumberTestReport.json",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-				tags = "@APITest1")
+				tags = "@APITest1233")
 
 public class APITestRunner<CucumberFeatureWrapper> {
 

@@ -1,6 +1,6 @@
 package Pojos.createBooking;
 
-public class BookingResponse {
+public class BookingDetails {
 
 	
 	public int bookingid;

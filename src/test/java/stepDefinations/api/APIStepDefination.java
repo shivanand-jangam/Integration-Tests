@@ -20,12 +20,12 @@ public class APIStepDefination {
 		restAssuredUtil.setBody(body);
 	}
 	
-	@When("I provided the body for create booking as firstname is (.*) and lastname is (.*)")
-	public void i_provided_the_body_for_create_booking_using_param_values(String fname, String lname) {
-		String body = "{\"firstname\":"+fname+",\"lastname\":"+lname+",\"totalprice\":656565,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2024-01-01\",\"checkout\":\"2024-01-01\"},\"additionalneeds\":\"Breakfast\"}";
+	@When("I provided the body for create booking as firstname is {string} and lastname is {string}")
+	public void i_provided_the_body_for_create_booking_using_param_values(
+			String fname, String lname) {
+		String body = "{\"firstname\":\""+fname+"\",\"lastname\":\""+lname+"\",\"totalprice\":111,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2018-01-15\",\"checkout\":\"2019-01-15\"},\"additionalneeds\":\"Breakfast\"}";
 		restAssuredUtil.setBody(body);
 	}
-	
 
 	@When("I provided the content type as {string}")
 	public void i_provided_the_content_type_as(String string) {
@@ -47,4 +47,14 @@ public class APIStepDefination {
 		restAssuredUtil.verifyBookingIdGenerated();
 	}
 
+	@Then("Verify Firstname as {string} after booking created")
+	public void verify_firstname_as_after_booking_created(String fname) {
+		restAssuredUtil.verifyFirstNameIsAsAfterCreateBooking(fname);
+	}
+
+	@Then("Verify Firstname as {string} for created booking")
+	public void verify_firstname_as_for_created_booking(String fname) {
+		restAssuredUtil.verifyFirstNameIsAsForCreatedBooking(fname);
+	}
+	
 }

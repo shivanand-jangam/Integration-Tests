@@ -14,10 +14,10 @@ public class POJOTesting {
 		
 		ObjectMapper mapper= new ObjectMapper();
 		
-		BookingResponse myData=	mapper.readValue(responseJson, BookingResponse.class);
+		BookingDetails myData=	mapper.readValue(responseJson, BookingDetails.class);
 		
 		System.out.println(myData.bookingid);
-		System.out.println(myData.booking.firstname);
+		System.out.println(myData.booking.depositpaid);
 		System.out.println(myData.booking.bookingdates.checkin);
 		
 		

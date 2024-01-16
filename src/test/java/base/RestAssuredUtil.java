@@ -8,7 +8,8 @@ import org.testng.Assert;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import Pojos.createbooking.CreatedBookingDetails;
+import Pojos.createBooking.Booking;
+import Pojos.createBooking.BookingDetails;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -68,30 +69,64 @@ public class RestAssuredUtil {
 
 		} else if (requestMethod.equalsIgnoreCase("GET")) {
 			System.out.println("Requesting a CALL for endpoint: " + endpoint);
-			response = RestAssured.given().when().headers(headers).body(body)
+			response = RestAssured.given().when().headers(headers)
 					.get(endpoint);
 			System.out.println(response.asPrettyString());
 
 		} else if (requestMethod.equalsIgnoreCase("DELETE")) {
 			System.out.println("Requesting a CALL for endpoint: " + endpoint);
-			response = RestAssured.given().when().headers(headers).body(body)
+			response = RestAssured.given().when().headers(headers)
 					.delete(endpoint);
 			System.out.println(response.asPrettyString());
 		}
 	}
 
 	public void verifyBookingIdGenerated() {
-		//https://json2csharp.com/code-converters/json-to-pojo
+		// https://json2csharp.com/code-converters/json-to-pojo
 		ObjectMapper om = new ObjectMapper();
 		try {
-			CreatedBookingDetails root = om.readValue(response.asString(),
-					CreatedBookingDetails.class);
+			BookingDetails root = om.readValue(response.asString(),
+					BookingDetails.class);
 
-			System.out.println("****&&&&&&&: "+root.bookingid);
-			System.out.println("****&&&&&&&: "+root.booking.firstname);
-			System.out.println("****&&&&&&&: "+root.booking.bookingdates.checkin);
+			System.out.println(
+					"****VERIFY ID CREATED ********: " + root.bookingid);
+
 			Assert.assertTrue(String.valueOf(root.bookingid) != null
 					|| String.valueOf(root.bookingid) != "");
+
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void verifyFirstNameIsAsAfterCreateBooking(String fname) {
+		// https://json2csharp.com/code-converters/json-to-pojo
+		ObjectMapper om = new ObjectMapper();
+		try {
+			BookingDetails root = om.readValue(response.asString(),
+					BookingDetails.class);
+
+			System.out.println(
+					"****VERIFY FNAME ********: " + root.booking.firstname);
+
+			Assert.assertTrue(root.booking.firstname.equalsIgnoreCase(fname));
+
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void verifyFirstNameIsAsForCreatedBooking(String fname) {
+		// https://json2csharp.com/code-converters/json-to-pojo
+		ObjectMapper om = new ObjectMapper();
+		try {
+			Booking root = om.readValue(response.asString(),
+					Booking.class);
+
+			System.out.println(
+					"****VERIFY FNAME ********: " + root.firstname);
+
+			Assert.assertTrue(root.firstname.equalsIgnoreCase(fname));
 
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
@@ -121,13 +156,13 @@ public class RestAssuredUtil {
 		} else if (requestMethod.equalsIgnoreCase("GET")) {
 			System.out.println("Requesting a CALL for endpoint: " + END_POINT);
 			response = RestAssured.given().when().headers(headers)
-					.body(REQUEST_BODY).get(END_POINT);
+					.get(END_POINT);
 			System.out.println(response.asPrettyString());
 
 		} else if (requestMethod.equalsIgnoreCase("DELETE")) {
 			System.out.println("Requesting a CALL for endpoint: " + END_POINT);
 			response = RestAssured.given().when().headers(headers)
-					.body(REQUEST_BODY).delete(END_POINT);
+					.delete(END_POINT);
 			System.out.println(response.asPrettyString());
 		}
 	}
